@@ -2,4 +2,4 @@
   package:
     name: "{{ item }}"
     state: present
-  loop: "{{ omzsh_dependencies }}"
+  loop: "{{ omzsh_dependencies }}"
