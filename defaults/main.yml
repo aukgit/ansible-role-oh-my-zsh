@@ -1,0 +1,33 @@
+---
+### ZSH ###
+zsh_aliases: []
+
+### Oh My ZSH ###
+# list of users
+omzsh_users: []
+
+# Installation path
+omzsh_install_path: ".oh-my-zsh"
+
+# default theme
+omzsh_user_theme: "gianu"
+
+# plugins
+omzsh_plugins: []
+
+# oh-my-zsh configuration
+omzsh_export_path: no
+omzsh_theme_random_candidates: []
+omzsh_case_sensitive: no
+omzsh_hyphen_insensitive: no
+omzsh_disable_auto_update: no
+omzsh_disable_update_prompt: no
+omzsh_update_zsh_days: 13
+omzsh_disable_magic_functions: no
+omzsh_disable_ls_colors: no
+omzsh_disable_auto_title: no
+omzsh_completion_waiting_dots: no
+omzsh_disable_untracked_files_dirty: no
+omzsh_hist_stamps: "mm/dd/yyyy"
+omzsh_custom_folder: "$ZSH/custom"
+omzsh_zshrc_additional_lines: []
