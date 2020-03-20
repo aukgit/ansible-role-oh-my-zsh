@@ -1,0 +1,11 @@
+- name: set user's default shell to zsh
+  user:
+    name: "{{ item.name if item.name is defined else item }}"
+    shell: /bin/zsh
+  loop: "{{ omzsh_users }}"
+
+- name: generate zsh_aliases file
+  template:
+    src: zsh_aliases.j2
+    dest: "/home/{{ item.name if item.name is defined else item }}/.zsh_aliases"
+  loop: "{{ omzsh_users }}"

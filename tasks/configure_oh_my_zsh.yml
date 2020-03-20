@@ -1,0 +1,9 @@
+- name: create a default .zshrc
+  template:
+    src: zshrc.j2
+    dest: "/home/{{ item.name if item.name is defined else item }}/.zshrc"
+    backup: yes
+    owner: "{{ item.name if item.name is defined else item }}"
+    group: "{{ item.name if item.name is defined else item }}"
+  become: yes
+  loop: "{{ omzsh_users }}"

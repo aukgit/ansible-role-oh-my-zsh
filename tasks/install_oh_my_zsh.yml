@@ -1,0 +1,10 @@
+---
+- name: clone oh-my-zsh
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh.git
+    dest: "/home/{{ item.name if item.name is defined else item }}/{{ item.install_path | omzsh_install_path }}"
+    accept_hostkey: true
+    update: yes
+  become: yes
+  become_user: "{{ item.name if item.name is defined else item }}"
+  loop: "{{ omzsh_users }}"

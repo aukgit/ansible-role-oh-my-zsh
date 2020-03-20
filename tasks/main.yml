@@ -1,0 +1,15 @@
+---
+- name: install dependencies
+  import_tasks: install_deps.yml
+
+- name: install zsh
+  import_tasks: install_zsh.yml
+
+- name: configure zsh
+  import_tasks: configure_zsh.yml
+
+- name: install oh-my-zsh
+  import_tasks: install_oh_my_zsh.yml
+
+- name: configure oh-my-zsh
+  import_tasks: configure_oh_my_zsh.yml
