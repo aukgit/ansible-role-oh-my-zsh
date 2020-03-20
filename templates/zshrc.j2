@@ -26,7 +26,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 {% endif %}
 
 export ZSH="/home/{{ user_name }}/{{ install_path }}"
-ZSH_THEME="{{ omzsh_theme }}"
+ZSH_THEME="{{ omzsh_user_theme }}"
 
 {% if (theme_random_candidates|length>0) and user_theme == "random" %}
 ZSH_THEME_RANDOM_CANDIDATES=({% for theme in theme_random_candidates %} "{{ theme }}" {% endfor %})
