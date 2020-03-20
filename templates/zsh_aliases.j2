@@ -1,0 +1,8 @@
+{% set zsh_aliases_list = item.zsh_aliases if item.zsh_aliases is defined else zsh_aliases %}
+
+{% for alias in zsh_aliases_list %}
+{% if alias.comment is defined %}
+# {{ alias.comment }}
+{% endif %}
+alias {{ name }}="{{ command }}"
+{% endfor %}

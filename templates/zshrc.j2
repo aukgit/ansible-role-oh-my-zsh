@@ -1,0 +1,91 @@
+{% set user_name = item.name if item.name is defined else item %}
+{% set export_path = item.export_path if item.export_path is defined else omzsh_export_path%}
+{% set install_path = item.install_path if item.install_path is defined else omzsh_install_path %}
+{% set user_theme = item.user_theme if item.user_theme is defined else omzsh_user_theme %}
+{% set theme_random_candidates = item.theme_random_candidates if item.theme_random_candidates is defined else omzsh_theme_random_candidates %}
+{% set case_sensitive = item.case_sensitive if item.case_sensitive is defined else omzsh_case_sensitive %}
+{% set hyphen_sensitive = item.hyphen_sensitive if item.hyphen_sensitive is defined else omzsh_hyphen_sensitive %}
+{% set disable_auto_update = item.disable_auto_update if item.disable_auto_update is defined else omzsh_disable_auto_update %}
+{% set disable_update_prompt = item.disable_update_prompt if item.disable_update_prompt is defined else omzsh_disable_update_prompt %}
+{% set update_zsh_days = item.update_zsh_days if item.update_zsh_days is defined else omzsh_update_zsh_days %}
+{% set disable_magic_functions = item.disable_magic_functions if item.disable_magic_functions is defined else omzsh_disable_magic_functions %}
+{% set disable_ls_colors = item.disable_ls_colors if item.disable_ls_colors is defined else omzsh_disable_ls_colors %}
+{% set disable_auto_title = item.disable_auto_title if item.disable_auto_title is defined else omzsh_disable_auto_title %}
+{% set enable_correction = item.enable_correction if item.enable_correction is defined else omzsh_enable_correction %}
+{% set completion_waiting_dots = item.completion_waiting_dots if item.completion_waiting_dots is defined else omzsh_completion_waiting_dots %}
+{% set disable_untracked_files_dirty = item.disable_untracked_files_dirty if item.disable_untracked_files_dirty is defined else omzsh_disable_untracked_files_dirty %}
+{% set hist_stamps = item.hist_stamps if item.hist_stamps is defined else omzsh_hist_stamps %}
+{% set custom_folder = item.custom_folder if item.custom_folder is defined else omzsh_custom_folder %}
+{% set plugins_list = item.plugins if item.plugins is defined else omzsh_plugins %}
+{% set zshrc_additional_lines = item.zshrc_additional_lines if item.zshrc_additional_lines is defined else omzsh_zshrc_additional_lines %}
+
+### Managed by Ansible ###
+
+{% if export_path %}
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+{% endif %}
+
+export ZSH="/home/{{ user_name }}/{{ install_path }}"
+ZSH_THEME="{{ omzsh_theme }}"
+
+{% if (theme_random_candidates|length>0) and user_theme == "random" %}
+ZSH_THEME_RANDOM_CANDIDATES=({% for theme in theme_random_candidates %} "{{ theme }}" {% endfor %})
+{% endif %}
+
+{% if case_sensitive %}
+CASE_SENSITIVE="true"
+{% endif %}
+
+{% if hyphen_sensitive %}
+HYPHEN_INSENSITIVE="true"
+{% endif %}
+
+{% if disable_auto_update %}
+DISABLE_AUTO_UPDATE="true"
+{% endif %}
+
+{% if disable_update_prompt %}
+DISABLE_UPDATE_PROMPT="true"
+{% endif %}
+
+export UPDATE_ZSH_DAYS={{ omzsh_update_zsh_days }}
+
+{% if disable_magic_functions %}
+DISABLE_MAGIC_FUNCTIONS=true
+{% endif %}
+
+{% if disable_ls_colors %}
+DISABLE_LS_COLORS="true"
+{% endif %}
+
+{% if disable_auto_title %}
+DISABLE_AUTO_TITLE="true"
+{% endif %}
+
+{% if enable_correction %}
+ENABLE_CORRECTION="true"
+{% endif %}
+
+{% if completion_waiting_dots %}
+COMPLETION_WAITING_DOTS="true"
+{% endif %}
+
+{% if disable_untracked_files_dirty %}
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+{% endif %}
+
+HIST_STAMPS="{{ hist_stamps }}"
+
+ZSH_CUSTOM={{ custom_folder }}
+
+plugins=({{ plugins_list|join(' ')}})
+
+source $ZSH/oh-my-zsh.sh
+
+# Zsh Aliases
+source $HOME/.zsh_aliases
+
+
+{% for line in zshrc_additional_lines %}
+{{ line }}
+{% endfor %}
