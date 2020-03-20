@@ -26,6 +26,7 @@ omzsh_update_zsh_days: 13
 omzsh_disable_magic_functions: no
 omzsh_disable_ls_colors: no
 omzsh_disable_auto_title: no
+omzsh_enable_correction: no
 omzsh_completion_waiting_dots: no
 omzsh_disable_untracked_files_dirty: no
 omzsh_hist_stamps: "mm/dd/yyyy"
