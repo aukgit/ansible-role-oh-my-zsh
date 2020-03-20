@@ -4,7 +4,7 @@
 {% set user_theme = item.user_theme if item.user_theme is defined else omzsh_user_theme %}
 {% set theme_random_candidates = item.theme_random_candidates if item.theme_random_candidates is defined else omzsh_theme_random_candidates %}
 {% set case_sensitive = item.case_sensitive if item.case_sensitive is defined else omzsh_case_sensitive %}
-{% set hyphen_sensitive = item.hyphen_sensitive if item.hyphen_sensitive is defined else omzsh_hyphen_sensitive %}
+{% set hyphen_sensitive = item.hyphen_sensitive if item.hyphen_sensitive is defined else omzsh_hyphen_insensitive %}
 {% set disable_auto_update = item.disable_auto_update if item.disable_auto_update is defined else omzsh_disable_auto_update %}
 {% set disable_update_prompt = item.disable_update_prompt if item.disable_update_prompt is defined else omzsh_disable_update_prompt %}
 {% set update_zsh_days = item.update_zsh_days if item.update_zsh_days is defined else omzsh_update_zsh_days %}
