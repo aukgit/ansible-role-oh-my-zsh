@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include ansible-role-oh-my-zsh"
+      include_role:
+        name: "ansible-role-oh-my-zsh"
